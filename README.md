@@ -7,6 +7,13 @@ play with heroku and neo4j
 
 http://graphplay.herokuapp.com/
 
+## heroku admin
+
+https://dashboard.heroku.com/apps/graphplay/resources
+
+ - select add-on neo4j
+ - select admin web page
+
 ## neo4j resources
 
 https://devcenter.heroku.com/articles/neo4j#deploying-an-example-python-app-on-neo4j
@@ -15,9 +22,9 @@ http://docs.neo4j.org/refcard/1.9/
 
 ## TODO
 
-Create image comparison service.
-Add relationships between images.
-Compute ranks.
+ - Create image comparison service. Like "Who is hotter?" Facebook App, but more general.
+ - Add relationships between images.
+ - Compute ranks.
 
 Mock:
 
