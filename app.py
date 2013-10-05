@@ -20,11 +20,13 @@ def create_graph(graph_db):
 
     # Do we have a node that has a 'name' property, which is set to the value 'Neo'?
     # We've probably been here before.
-    data, metadata = cypher.execute(graph_db, "START n=node(*) where n.name?='Neo' return n")
-    if data:
+    # Race condition? Should probably use transacation, or just use an update but whatever
+    query = "START n=node(*) where HAS(n.name) and n.name='Neo' return n"
+    data, metadata = cypher.execute(graph_db, query)
+    if not data:
         # Create two nodes, one for us and one for you.
         # Make sure they both have 'name' properties with values.
-        from_node, to_node = graph_db.create({"name": "neo4j"}, {"name": "you"})
+        from_node, to_node = graph_db.create({"name": "Neo"}, {"name": "you"})
 
         # create a 'loves' relationship from the 'from' node to the 'to' node
         from_node.create_relationship_to(to_node, "loves")
